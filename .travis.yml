@@ -13,10 +13,10 @@ install:
 - go get gopkg.in/check.v1
 - go get github.com/satori/go.uuid
 - go get github.com/baiyubin/aliyun-sts-go-sdk/sts
-- if [[ $TRAVIS_GO_VERSION = '1.7' || $TRAVIS_GO_VERSION > '1.7' ]]; then travis_wait go get golang.org/x/time/rate
+- if [[ $TRAVIS_GO_VERSION = '1.7' || $TRAVIS_GO_VERSION > '1.7' ]]; then  go get golang.org/x/time/rate
   ; fi
 script:
-- travis_wait
+- travis_wait 20 sleep 20m &
 - if [[ ! -n "$OSS_TEST_ACCESS_KEY_ID" ]]; then exit 0
   ; fi
   
