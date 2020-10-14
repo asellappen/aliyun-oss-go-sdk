@@ -17,6 +17,8 @@ install:
   ; fi
 script:
 - if [[ ! -n "$OSS_TEST_ACCESS_KEY_ID" ]]; then exit 0
+  else
+  echo "test false"
   ; fi
   
 #- cd oss
