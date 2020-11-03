@@ -1,27 +1,30 @@
 language: go
 arch:
-- ppc64le
 - amd64
+- ppc64le
 go:
 - 1.5
 - 1.6
 - 1.7
 - 1.8
 install:
+- travis_wait  sleep 30m &
 - go get golang.org/x/tools/cmd/cover
 - go get github.com/mattn/goveralls
 - go get gopkg.in/check.v1
+- travis_wait  sleep 30m &
 - go get github.com/satori/go.uuid
+- travis_wait  sleep 30m &
 - go get github.com/baiyubin/aliyun-sts-go-sdk/sts
 - if [[ $TRAVIS_GO_VERSION = '1.7' || $TRAVIS_GO_VERSION > '1.7' ]]; then  go get golang.org/x/time/rate
   ; fi
 script:
-- travis_wait 20 sleep 20m &
+- travis_wait  sleep 30m &
 - if [[ ! -n "$OSS_TEST_ACCESS_KEY_ID" ]]; then exit 0
   ; fi
   
 #- cd oss
-#- travis_wait 50 go test -v -covermode=count -coverprofile=coverage.out -timeout=50m
+#- travis_wait 50 go test -v -covermode=count -coverprofile=coverage.out -timeout=60m
 #- "$HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=travis-ci"
 
 env:
